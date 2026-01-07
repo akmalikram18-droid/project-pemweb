@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cart - The Haven Pet Shop</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+            rel="stylesheet">
+        <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; }
+        .navbar { background-color: #28a745; }
+        footer { background-color: #343a40; color: white; text-align: center; padding: 20px 0; }
+    </style>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">The Haven Pet Shop</a>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link"
+                            href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link active"
+                            href="cart.html">🛒 Keranjang</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">🛒 Keranjang Anda</h2>
+
+                <table class="table table-bordered text-center">
+                    <thead class="table-success">
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartItems"></tbody>
+                </table>
+
+                <h4 class="text-end">Grand Total: $<span
+                        id="grandTotal">0</span></h4>
+
+                <div class="text-end mt-3">
+                    <button class="btn btn-danger" onclick="clearCart()">Clear
+                        Cart</button>
+                    <button class="btn btn-success" onclick="checkout()">Checkout</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 The Haven Pet Shop</p>
+            </div>
+        </footer>
+
+        <!-- Modal untuk Notifikasi Checkout -->
+        <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="checkoutModalLabel">Pesanan Berhasil!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Terima kasih telah berbelanja di The Haven Pet Shop! 🎉</p>
+                        <p>Pesanan Anda telah berhasil dibuat. Kami akan memprosesnya segera.</p>
+                        <p><strong>Detail Pesanan:</strong></p>
+                        <ul id="orderDetails"></ul>
+                        <p><strong>Total: $<span id="modalTotal">0</span></strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cartItems = document.getElementById("cartItems");
+let grandTotal = document.getElementById("grandTotal");
+
+function renderCart() {
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        let itemTotal = item.price * item.qty;
+        total += itemTotal;
+
+        cartItems.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>$${item.price}</td>
+                <td>${item.qty}</td>
+                <td>$${itemTotal.toFixed(2)}</td>
+                <td>
+                    <button class="btn btn-sm btn-danger" onclick="removeItem(${index})">
+                        Remove
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+
+    grandTotal.textContent = total.toFixed(2);
+}
+
+function checkout() {
+    if (cart.length === 0) {
+        alert("Keranjang kosong! Tambahkan produk terlebih dahulu.");
+        return;
+    }
+    
+    // Simpan pesanan ke localStorage
+    localStorage.setItem("lastOrder", JSON.stringify(cart));
+    
+    // Tampilkan modal notifikasi
+    showCheckoutModal();
+    
+    // Kosongkan keranjang setelah checkout
+    clearCart();
+}
+
+function showCheckoutModal() {
+    const modal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+    const orderDetails = document.getElementById('orderDetails');
+    const modalTotal = document.getElementById('modalTotal');
+    
+    // Ambil data dari localStorage (lastOrder)
+    const lastOrder = JSON.parse(localStorage.getItem("lastOrder")) || [];
+    let total = 0;
+    
+    orderDetails.innerHTML = "";
+    lastOrder.forEach(item => {
+        let itemTotal = item.price * item.qty;
+        total += itemTotal;
+        orderDetails.innerHTML += `<li>${item.name} - Qty: ${item.qty} - $${itemTotal.toFixed(2)}</li>`;
+    });
+    
+    modalTotal.textContent = total.toFixed(2);
+    modal.show();
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+function clearCart() {
+    localStorage.removeItem("cart");
+    cart = [];
+    renderCart();
+}
+
+renderCart();
+</script>
+
+    </body>
+</html>

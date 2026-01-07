@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kelompok 15 PemWeb - Pet Shop</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+            rel="stylesheet">
+        <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+         }
+        .navbar { 
+            background-color: #28a745;
+         }
+        .hero { 
+            background: url('https://moondoggiesmusic.com/wp-content/uploads/2019/03/jenis-hewan-peliharaan.png') no-repeat center/cover; height: 60vh; display: flex; align-items: center; justify-content: center; color: black; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .product-card { transition: transform 0.3s; border: none; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .product-card:hover { transform: scale(1.05); }
+        .product-card img { height: 200px; object-fit: cover; }
+        footer { background-color: #343a40; color: white; text-align: center; padding: 20px 0; }
+     /* Layout menggunakan float */
+  main {
+      margin: 20px;
+      overflow: auto;
+  }
+
+  section {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+  }
+
+  #konten {
+      float: left;
+      width: 65%;
+  }
+
+  #sidebar {
+      float: right;
+      width: 30%;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 15px;
+  }
+
+  footer {
+      clear: both;
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+  }
+
+  h2 {
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 4px;
+  }
+
+  /* OUR TEAM (SIMPLE) */
+.our-team {
+    padding: 50px 20px;
+    text-align: center;
+    background: #fff;
+}
+
+.our-team h2 {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.our-team p {
+    max-width: 700px;
+    margin: 10px auto 40px;
+    color: #555;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.team-member {
+    width: 180px;
+}
+
+.team-member img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.team-member h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.team-member span {
+    font-size: 14px;
+    color: #666;
+}
+
+
+    </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="about.htmlama aku juga">Tentang Kami</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link"
+                                href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active"
+                                href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link active"
+                            href="cart.html">🛒 Keranjang</a></li>
+                        <span id="cartCount" class="cart-badge">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main>
+    <section id="profil">
+        <p>
+            Selamat datang di <strong>Haven PetShop</strong>, e-commerce pet
+            shop yang hadir untuk memenuhi kebutuhan hewan peliharaan Anda
+            dengan mudah, aman, dan terpercaya.
+            Kami menyediakan berbagai <b>produk berkualitas</b> seperti makanan
+            hewan, perlengkapan perawatan, aksesoris, mainan, serta kebutuhan
+            lainnya untuk anjing, kucing, dan hewan peliharaan kesayangan Anda.
+        </p>
+
+        <p>
+            Kami percaya bahwa hewan peliharaan bukan hanya sekadar hewan,
+            tetapi bagian dari keluarga. Oleh karena itu, Haven PetShop
+            berkomitmen untuk menghadirkan produk terbaik yang aman, nyaman, dan
+            mendukung kesehatan serta kebahagiaan hewan peliharaan.
+        </p>
+
+        <p>
+            Dengan sistem belanja online yang <b>praktis</b> dan pelayanan
+            pelanggan yang responsif, kami berusaha memberikan pengalaman
+            berbelanja yang menyenangkan bagi setiap pelanggan.
+            Kepuasan pelanggan dan kesejahteraan hewan peliharaan selalu menjadi
+            prioritas utama kami.
+        </p>
+
+        <h4><strong>Visi Kami</strong></h4>
+        <p>Menjadi e-commerce pet shop terpercaya dan terdepan dalam menyediakan
+            kebutuhan hewan peliharaan serta mendukung kesejahteraan hewan di
+            Indonesia.</p>
+
+        <h4><strong>Misi Kami</strong></h4></h2>
+    <ul>
+        <li>Menyediakan produk hewan peliharaan yang berkualitas dan aman</li>
+        <li>Memberikan pelayanan yang cepat, ramah, dan profesional</li>
+        <li>Memudahkan pelanggan berbelanja kebutuhan hewan peliharaan secara
+            online</li>
+        <li>Mengedukasi pemilik hewan tentang perawatan yang baik</li>
+    </ul>
+
+    <h4><strong>Mengapa Memilih Kami?</strong></h4>
+    <ul>
+        <li>Produk lengkap dan berkualitas</li>
+        <li>Pengiriman cepat dan aman</li>
+        <li>Layanan pelanggan responsif</li>
+        <li>Harga terjangkau</li>
+    </ul>
+
+    <p>Haven PetShop siap menjadi partner terpercaya Anda dalam merawat dan
+        membahagiakan sahabat berbulu setiap hari.</p>
+</section>
+
+<section id="our team">
+    <h2 class="text-center"><strong>Our Team</strong></h2>
+    <p class="text text-center">
+        Dengan tim yang profesional dan penuh kasih sayang,
+        <strong>Haven PetShop</strong> berkomitmen memberikan
+        pengalaman terbaik bagi Anda dan hewan kesayangan!
+    </p>
+
+    <div class="team-grid">
+        <div class="team-member">
+            <img src="foto4.jpg">
+            <h5>Akmal Ikram Khairullah</h5>
+            <span>0110125128</span>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="foto3.jpg">
+                <h5>Awalina Rizki Ramadhanti</h5>
+                <span>0110125084</span>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="foto1.jpg">
+                    <h5>Hafizha Qolbiya Salima</h5>
+                    <span>0110125102</span>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="foto2.jpg">
+                        <h5>Nursyamsiah Nawawi</h5>
+                        <span>0110125122</span>
+                    </div>
+
+                </section>
+            </main>

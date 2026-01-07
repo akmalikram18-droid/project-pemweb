@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registrasi - Haven Pet Shop</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+        .register-container{
+            background:#fff;
+            padding:2rem;
+            width:400px;
+            border-radius:8px;
+            box-shadow:0 0 10px rgba(0,0,0,.1);
+            text-align:center;
+        }
+        input, button{
+            width:100%;
+            padding:10px;
+            margin:8px 0;
+        }
+        button{
+            background:#4CAF50;
+            color:#fff;
+            border:none;
+            cursor:pointer;
+        }
+        button:hover{background:#45a049;}
+        a{color:#4CAF50;text-decoration:none;}
+    </style>
+    </head>
+    <body>
+
+        <div class="register-container">
+            <h2>Registrasi Akun Haven</h2>
+            <form onsubmit="registerUser(event)">
+                <input type="text" id="fullname" placeholder="Nama Lengkap"
+                    required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password"
+                    required>
+                <input type="password" id="confirm"
+                    placeholder="Konfirmasi Password" required>
+                <button type="submit">Daftar</button>
+            </form>
+            <p>
+                <a href="login.html">Sudah punya akun? Login</a><br>
+                <br>
+                <a href="index.html">Home</a>
+            </p>
+        </div>
+
+        <script>
+function registerUser(e){
+    e.preventDefault();
+
+    const fullname = document.getElementById("fullname").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirm").value;
+
+    if(password !== confirm){
+        alert("Password tidak sama!");
+        return;
+    }
+
+    const user = { fullname, email, password };
+    localStorage.setItem("user", JSON.stringify(user));
+
+    alert("Registrasi berhasil! Silakan login.");
+    window.location.href = "login.html";
+}
+</script>
+
+    </body>
+</html>
